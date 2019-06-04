@@ -31,6 +31,22 @@ type Config struct {
 	BlockTimeout time.Duration
 }
 
+func (c Config) Validate() error {
+	if c.SyncDB < 0 || c.SyncDB > 15 {
+		return errors.New("bad Sync DB, must be >= 0 && <= 15")
+	}
+	if len(c.SyncKey) == 0 {
+		return errors.New("u must set sunc key")
+	}
+	if c.SyncTimeout == 0 {
+		return errors.New("u must set sunc timeout")
+	}
+	if c.BlockTimeout == 0 {
+		return errors.New("u must set block timeout")
+	}
+	return nil
+}
+
 func GetDefaultConfig() Config {
 	return Config{
 		SyncDB:       0,
