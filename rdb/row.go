@@ -234,7 +234,7 @@ func (d *RowDecoder) Decode() (*Row, error) {
 			log.Println(string(data))
 		}
 		res := make(map[string]string)
-		for i := 0; i < len(l.list)/2; i++ {
+		for i := 0; i < len(l.list)/2; i += 2 {
 			res[l.list[i].String()] = l.list[i+1].String()
 		}
 
