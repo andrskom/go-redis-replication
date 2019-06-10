@@ -25,10 +25,10 @@ const (
 )
 
 type Config struct {
-	SyncDB       int
-	SyncKey      string
-	SyncTimeout  time.Duration
-	BlockTimeout time.Duration
+	SyncDB       int           `envconfig:"SYNC_DB"`
+	SyncKey      string        `split_words:"true"`
+	SyncTimeout  time.Duration `split_words:"true"`
+	BlockTimeout time.Duration `split_words:"true"`
 }
 
 func (c Config) Validate() error {
